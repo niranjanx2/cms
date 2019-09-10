@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+// import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,22 +13,9 @@ import { UsersComponent } from './users/users.component';
 import { HeadersComponent } from './headers/headers.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-
-const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'pages', component: PagesComponent },
-  { path: 'posts', component: PostsComponent },
-  { path: 'users', component: UsersComponent },
-  // { path: '**', component: PageNotFoundComponent },
-  // { path: 'hero/:id',      component: HeroDetailComponent },
-  // {
-  //   path: 'heroes',
-  //   component: HeroListComponent,
-  //   data: { title: 'Heroes List' }
-  // },
-];
+// import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -40,14 +28,13 @@ const appRoutes: Routes = [
     HeadersComponent,
     FooterComponent,
     LoginComponent,
+    HomeComponent,
+    // HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
